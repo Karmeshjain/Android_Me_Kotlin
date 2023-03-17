@@ -19,6 +19,8 @@ import android.widget.ImageView
  class BodyPartFragment() : Fragment() {
 
     val TAG="BodyPartFragment"
+    val image_id_list="image_ids"
+    val list_index="list_index"
     var mImageIds = listOf<Int>()
 
     var mListIndex:Int = 0;
@@ -28,15 +30,30 @@ import android.widget.ImageView
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+        if(savedInstanceState !=null)
+        {
+            mImageIds= savedInstanceState.getIntegerArrayList(image_id_list)!!
+            mListIndex=savedInstanceState.getInt(list_index)
+        }
         val view=inflater.inflate(R.layout.fragment_body_part,container,false)
         var imageView=view.findViewById<View>(R.id.body_part_image_view) as ImageView
         if(mImageIds!=null) {
             imageView.setImageResource(mImageIds.get(mListIndex)!!)
+            imageView.setOnClickListener(View.OnClickListener {
+                if(mListIndex<mImageIds.size -1)
+                    mListIndex++
+                 imageView.setImageResource(mImageIds.get(mListIndex))
+            })
         }
         else
         {
             Log.d("TAG", "List is empty")
         }
         return view
+    }
+
+    override fun onSaveInstanceState(currentState: Bundle) {
+        currentState.putIntegerArrayList(image_id_list,ArrayList(mImageIds))
+        currentState.putInt(list_index,mListIndex)
     }
 }
