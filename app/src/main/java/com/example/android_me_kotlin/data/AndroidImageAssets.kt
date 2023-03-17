@@ -6,7 +6,7 @@ object AndroidImageAssets {
     // Getter methods that return lists of all head images, body images, and leg images
     // Lists for all AndroidMe images
     // Broken down into heads, bodies, legs, and all images
-    val heads: ArrayList<Int?> = object : ArrayList<Int?>() {
+    val heads: List<Int?> = object : ArrayList<Int?>() {
         init {
             add(R.drawable.head1)
             add(R.drawable.head2)
@@ -22,7 +22,7 @@ object AndroidImageAssets {
             add(R.drawable.head12)
         }
     }
-    val bodies: ArrayList<Int?> = object : ArrayList<Int?>() {
+    val bodies: List<Int?> = object : ArrayList<Int?>() {
         init {
             add(R.drawable.body1)
             add(R.drawable.body2)
@@ -38,7 +38,7 @@ object AndroidImageAssets {
             add(R.drawable.body12)
         }
     }
-    val legs: ArrayList<Int?> = object : ArrayList<Int?>() {
+    val legs: List<Int?> = object : ArrayList<Int?>() {
         init {
             add(R.drawable.legs1)
             add(R.drawable.legs2)
@@ -56,7 +56,7 @@ object AndroidImageAssets {
     }
 
     // Returns a list of all the images combined: heads, bodies, and legs in that order
-    val all: ArrayList<Int?> = object : ArrayList<Int?>() {
+    val all: List<Int?> = object : ArrayList<Int?>() {
         init {
             addAll(heads)
             addAll(bodies)
