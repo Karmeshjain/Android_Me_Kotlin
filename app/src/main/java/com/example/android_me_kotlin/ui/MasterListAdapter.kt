@@ -6,19 +6,10 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.ImageView
 
-class MasterListAdapter : BaseAdapter() {
+class MasterListAdapter(context: Context?, imageIds: List<Int?>) : BaseAdapter() {
     // Keeps track of the context and list of images to display
-    private var mContext: Context? = null
-    private var mImageIds: List<Int>? = null
-
-    /**
-     * Constructor method
-     * @param imageIds The list of images to display
-     */
-    fun MasterListAdapter(context: Context?, imageIds: List<Int>?) {
-        mContext = context
-        mImageIds = imageIds
-    }
+    private var mContext: Context? = context
+    private var mImageIds: List<Int?> = imageIds
 
     /**
      * Returns the number of items the adapter will display
@@ -52,7 +43,7 @@ class MasterListAdapter : BaseAdapter() {
         }
 
         // Set the image resource and return the newly created ImageView
-        imageView.setImageResource(mImageIds!![position])
+        imageView.setImageResource(mImageIds!![position]!!)
         return imageView
     }
 
