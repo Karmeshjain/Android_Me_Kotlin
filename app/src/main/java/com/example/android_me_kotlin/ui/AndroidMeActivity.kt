@@ -13,18 +13,21 @@ class AndroidMeActivity : AppCompatActivity() {
         if(savedInstanceState==null) {
             var headFragment = BodyPartFragment()
             headFragment.mImageIds = AndroidImageAssets.heads as List<Int>
-            headFragment.mListIndex = 2
+            var headIndex=intent.getIntExtra("headIndex", 0)
+            headFragment.mListIndex = headIndex
             var fragmentManager = supportFragmentManager
             fragmentManager.beginTransaction().add(R.id.head_container, headFragment).commit()
 
             var bodyFragment = BodyPartFragment()
             bodyFragment.mImageIds = AndroidImageAssets.bodies as List<Int>
-            bodyFragment.mListIndex = 2
+            var bodyIndex=intent.getIntExtra("bodyIndex", 0)
+            bodyFragment.mListIndex = bodyIndex
             fragmentManager.beginTransaction().add(R.id.body_container, bodyFragment).commit()
 
             var legFragment = BodyPartFragment()
             legFragment.mImageIds = AndroidImageAssets.legs as List<Int>
-            legFragment.mListIndex = 2
+            var legIndex=intent.getIntExtra("legIndex", 0)
+            legFragment.mListIndex = legIndex
             fragmentManager.beginTransaction().add(R.id.leg_container, legFragment).commit()
         }
     }
